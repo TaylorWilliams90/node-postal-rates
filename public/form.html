@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Form for the Post</title>
+    <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script type="text/javascript" src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/main.css" />
+</head>
+
+<body>
+
+    <nav class="navbar navbar-default navbar-static-top navbar-inverse">
+        <div class="container">
+          <ul class="nav navbar-nav">
+            <li class="active">
+              <a href="/"><span class="glyphicon glyphicon-home"></span> Home</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+<div class="jumbotron text-center">
+  <div class="container">
+    <h1>Postal Rates</h1>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+        <form class="form-group" action="/post" method="get">
+            <select class="form-control" name="type">
+                <option>Stamped</option>
+                <option>Metered</option>
+                <option>Flats</option>
+                <option>First-Class</option>
+            </select>
+    
+            <input class="form-control" type="text" name="weight">
+    
+            <br><br>
+            <input class="btn btn-primary mb-2" type="submit" value="Get Result">
+    
+        </form>
+    </div>
+  </div> <!-- row -->
+</div>
+
+
+</body>
+</html>
