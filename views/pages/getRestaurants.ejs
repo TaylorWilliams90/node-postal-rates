@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <% include ../partials/header.ejs %>
+</head>
+<body>
+  <% include ../partials/nav.ejs %>
+<div class="container">
+    <h1>Week 10 Project</h1>
+    <% results.forEach(function(r) { %>
+        <li><%= r.id %> - <%= r.name %></li>
+    <% }); %>
+
+</div>
+</body>
+</html>
