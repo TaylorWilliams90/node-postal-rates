@@ -59,7 +59,9 @@ express()
     if (err) {
       throw err
   }
-  console.log(results.rows)
-  res.status(200).json(results.rows)
+  console.log(results.rows);
+        res.status(200);
+        res.setHeader('Content-type', 'text/plain');
+        return res.send(respondWith);
 })
 }
