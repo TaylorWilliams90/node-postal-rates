@@ -16,6 +16,7 @@ express()
   .get('/post', rateMath)
   .get('/getUser', function (req, res) {
     getUsers(req, res);
+    res.render('pages/users');
   })
   .listen(PORT, () => console.log(`Listening on ${ PORT }`));
 
@@ -54,13 +55,11 @@ express()
   }
 
   function getUsers (req, res) {
-    var urlParse = url.parse(req.url, true);
-    var id = urlParse.query['id'];
-    pool.query('SELECT * FROM person WHERE id='+id, (err, results) => {
-        if (err) {
-            throw err
-        }
-        console.log(results.rows)
-        res.status(200).json(results.rows)
-    })
+    pool.query('SSELECT * FROM users', (err, results) => {
+    if (err) {
+      throw err
+  }
+  console.log(results.rows)
+  res.status(200).json(results.rows)
+})
 }
