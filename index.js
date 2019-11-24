@@ -13,10 +13,11 @@ express()
   .set('views', path.join(__dirname, 'views'))
   .set('view engine', 'ejs')
   .get('/', (req, res) => res.render('pages/index'))
-  .get('/getRestaurants', (req, res) => res.render('pages/getRestaurants'))
   .get('/post', rateMath)
-  .get('/getRestaurants', getRestaurants)
-  .listen(PORT, () => console.log(`Listening on ${ PORT }`))
+  .get('/getUser', function (req, res) {
+    getUsers(req, res);
+  })
+  .listen(PORT, () => console.log(`Listening on ${ PORT }`));
 
   function rateMath(request, response) {
     const type = request.query.type;
@@ -52,22 +53,14 @@ express()
         
   }
 
-  function getRestaurants(request, response) {
-  
-    conn.query('select * from restaurant', function(error, results){
-      if ( error ){
-          response.status(400).send('Error in database operation');
-      } else {
-        console.log(result);
-          response.send(results);
-      }
-  
-      // Make sure we got a row with the resturant, then prepare JSON to send back
-      if (error || result == null || result.length != 1) {
-        response.status(500).json({success: false, data: error});
-      } else {
-        const restaurtants = result[i];
-        response.status(200).json(restaurtants);
-      }
-    });
-  }
+  function getUsers (req, res) {
+    var urlParse = url.parse(req.url, true);
+    var id = urlParse.query['id'];
+    pool.query('SELECT * FROM person WHERE id='+id, (err, results) => {
+        if (err) {
+            throw err
+        }
+        console.log(results.rows)
+        res.status(200).json(results.rows)
+    })
+}
