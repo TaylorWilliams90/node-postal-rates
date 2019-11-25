@@ -55,7 +55,7 @@ express()
   }
 
   function getUsers (req, res) {
-    pool.query('SSELECT * FROM users', (err, results) => {
+    pool.query('SELECT * FROM users', (err, results) => {
     if (err) {
       throw err
   }
